@@ -1,13 +1,40 @@
 # SolarSystemAPI
-This is the API I developed and used for my [Solar System application](https://github.com/ifeomare/solarsystem). The information used has been gathered from Nasa and other trusted resources on the internet.
+This API is used for [solarsystem](https://github.com/ifeomare/solarsystem). The information used has been gathered from
+Nasa and other trusted resources on the internet.
 <br />
 
-## Introduction
-This project serves as a basic API used for a larger Solar System application. It's purposely small so that I can have experience as to what goes into building an API. As time goes on, I'll work on refining both this API and the application incorporating it.
+## Description
+This project serves as a basic RESTful API used for a larger Solar System application. It contains detailed information
+about the Solar System, including the planets, the Sun, and their properties. This API is read-only as users cannot
+modify any data stored in the API.
 
 ### About the API
+- Retrieve details about the Solar System
+- Fetch data about the planets and the Sun
+- Read-only API
 
-#### Galaxy
+## Tech Stack
+- Java/Springboot
+
+## Endpoints
+| Method | Endpoint              | Description                                             |
+|--------|-----------------------|---------------------------------------------------------|
+| GET    | /solarsystem/         | Gets the Solar System's name and the name of the galaxy |
+| GET    | /solarsystem/{galaxy} | Gets the Sun and the planets                            |
+| GET    | /solarsystem/{Planet} | Gets planet information                                 |
+
+## Responses
+#### Solar System( /solarsystem/ )
+
+```yaml
+{
+  "name": "The Solar System",
+  "galaxy": {
+    "galaxy":"Milky Way"
+  }
+}
+```
+#### Galaxy ( /solarsystem/milkyway )
 To see all the planets listed under a galaxy(like the Milky Way), call the endpoint http://localhost:8080/solarsystem/milkyway:
 ```yaml
 {
@@ -182,7 +209,7 @@ To see all the planets listed under a galaxy(like the Milky Way), call the endpo
 ```
 
 
-#### Planets
+#### Planets ( /solarsystem/Mercury)
 Each call to a planet will return the name and nickname of the planet, it's relation to the sun compared to the other planets, it's radius and distance from the sun, the type of planet it is, a fact about the planet, and a picture of the planet.
 
 For example, to find information about the planet Mercury, calling the endpoint http://localhost:8080/solarsystem/Mercury, returns:
@@ -207,3 +234,8 @@ For example, to find information about the planet Mercury, calling the endpoint 
 "fact": "Standing on Mercury's surface at its closest approach to the\nSun, our star would appear more than three times larger than it\ndoes on Earth."
 }
 ```
+
+## Next Steps
+- Adjusting the endpoints for the planets
+- Including dwarf planets to the Solar System
+- Including the planet's moons
